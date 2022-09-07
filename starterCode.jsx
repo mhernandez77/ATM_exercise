@@ -1,16 +1,19 @@
 
 const ATMDeposit = (onChange, isDeposit) => {
     const choice = ["Deposit", "Cash Back"];
+    const deposit = 1;
+
+    if (deposit >= !deposit) {
+        return `Warning: Overdraft Fee Will Be Charged`
+    }
     return (
         <label className="label huge">
-            {/*Deposit:*/}
+            {/*Deposit number is fetched w/ T/F 0/1*/}
             <h3>{choice[Number(!isDeposit)]}</h3>
             <input type="number" onChange={onChange}></input>
             <input type="submit" value={"submit"} onClick={handleSubmit}></input>
-            {/*<h2 id="total">{status}</h2>*/}
         </label>
     );
-};
 }
 const Account = () => {
   const [accountState, setAccountState] = React.useState(0);
@@ -18,10 +21,6 @@ const Account = () => {
     console.log(`handleChange ${event.target.value}`);
     setAccountState(event.target.value);
   };
-  // const handleSubmit = event => {
-  //   alert(`Account total = ${accountState}`);
-  //   event.preventDefault();
-  // };
 
     let transactionState = 0; // state of this transaction
     const [totalState, setTotalState] = React.useState(0);
@@ -30,7 +29,7 @@ const Account = () => {
     let status = `Account Balance $ ${totalState}`;
     //print for checking if rerendering correctly
     console.log('Account rendered')
-    const handleChange = event => {
+    const onChange = event => {
         console.log(`handleChange ${event.target.value}`);
         transactionState = Number(event.target.value);
     };
@@ -40,15 +39,6 @@ const Account = () => {
         event.preventDefault();
         // document.getElementById("total").innerHTML = status;
     };
-//     return (
-//         <label className="label huge">
-//             Deposit:
-//             <input type="number" onChange={handleChange}></input>
-//             <input type="submit" value={"submit"} onClick={handleSubmit}></input>
-//             <h2 id="total">{status}</h2>
-//         </label>
-//     );
-// };
 
 return (
     <form onSubmit={handleSubmit}>
